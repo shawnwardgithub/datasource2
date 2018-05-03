@@ -51,8 +51,6 @@ public class BinaryTree {
             }
         }
     }
-
-
     //前序，中序，后序遍历二叉树
     public void traverse(int traverseType) {
         switch(traverseType)
@@ -105,7 +103,31 @@ public class BinaryTree {
 
         return dd;
     }
+    //寻找最大值的节点
+    public TreeNode FindMaxNode(){
+        TreeNode currentNode=root;
+        TreeNode parentNode=root;
+        if(currentNode!=null){
+            parentNode=currentNode;
+            currentNode=currentNode.rightNode;
+        }
+        return  parentNode;
+    }
+    //寻找最小值的节点
+    public TreeNode FindMinNode(){
+        TreeNode currentNode=root;
+    }
 
+
+
+    public static void main(String[] args) {
+        BinaryTree v=new BinaryTree();
+        v.insertCurrentNode(new TreeNode(1,"test1"));
+        v.insertCurrentNode(new TreeNode(7,"test1"));
+        v.insertCurrentNode(new TreeNode(4,"test1"));
+
+        System.out.println(v.findCurrentNode(1).value);
+    }
 
 
 

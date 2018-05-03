@@ -17,4 +17,9 @@ public class TreeNode {
 
     public TreeNode rightNode;
 
+    public TreeNode(int key,Object value){
+       this.key=key;
+       this.value=value;
+    }
+
 }
