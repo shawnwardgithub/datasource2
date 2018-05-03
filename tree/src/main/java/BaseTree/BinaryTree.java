@@ -116,9 +116,18 @@ public class BinaryTree {
     //寻找最小值的节点
     public TreeNode FindMinNode(){
         TreeNode currentNode=root;
+        TreeNode parentNode =root;
+        if(currentNode!=null){
+            parentNode=currentNode;
+            currentNode=currentNode.leftNode;
+        }
+        return  parentNode;
     }
+    //删除某个节点
+    public void DeleteSomeNode(){
 
 
+    }
 
     public static void main(String[] args) {
         BinaryTree v=new BinaryTree();
