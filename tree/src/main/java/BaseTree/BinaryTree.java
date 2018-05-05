@@ -123,11 +123,93 @@ public class BinaryTree {
         }
         return  parentNode;
     }
+
     //删除某个节点
     public void DeleteSomeNode(){
+       //删除节点
+
+
 
 
     }
+
+
+    //修改某个节点
+    //修改节点时的可能性
+    //1. 该节点没有子节点（简单）
+    //2. 该节点有一个子节点（还行）
+    //3. 该节点有两个子节点（复杂）
+    //删除节点的时间复杂度为O(logN)
+    public boolean modfitySomeNode(int key){
+        TreeNode currentNode=root;
+
+        boolean isLeftTreeNode=true;
+
+        if(currentNode==null){
+            return false;
+        }
+
+        while (currentNode.key!=key){
+
+            if(key<currentNode.key){
+                isLeftTreeNode=true;
+                currentNode=currentNode.leftNode;
+
+            }else{
+                isLeftTreeNode=false;
+                currentNode=currentNode.rightNode;
+            }
+
+            if(currentNode==null){
+                return false;
+            }
+            //找到了要删除的节点，下面开始删除
+            //1. 要删除的节点没有子节点,直接将其父节点的左子节点或者右子节点赋为null即可
+            if(currentNode.leftNode==null&&currentNode.rightNode==null){
+                deleteNoNode(currentNode,isLeftTreeNode);
+            }
+            //3. 要删除的节点有两个子节点
+            else if(currentNode.leftNode!=null&&currentNode.rightNode!=null){
+                deleteTwoNode(currentNode,isLeftTreeNode);
+            }
+            //2. 要删除的节点有一个子节点，直接将其砍断，将其子节点与其父节点连起来即可，要考虑特殊情况就是删除根节点，因为根节点没有父节点
+            else{
+                deleteOneNode(currentNode,isLeftTreeNode);
+            }
+
+        }
+
+
+
+    }
+    //删除的没有子节点
+    public boolean deleteNoNode(TreeNode currentNode,boolean isLeftTreeNode){
+        if(currentNode==root){
+            root=null;
+            return  true;
+        }
+        if(isLeftTreeNode){
+            currentNode.parent.leftNode=null;
+        }else{
+            currentNode.parent.rightNode=null;
+        }
+        return true;
+    }
+    //删除的有两个子节点
+    public boolean deleteTwoNode(TreeNode currentNode,boolean isLeftTreeNode){
+       return  true;
+    }
+    //删除的有一个子节点
+    public boolean deleteOneNode(TreeNode currentNode,boolean isLeftTreeNode){
+        if(currentNode.leftNode==null){
+
+        }
+
+
+    }
+
+
+
 
     public static void main(String[] args) {
         BinaryTree v=new BinaryTree();
